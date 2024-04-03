@@ -25,7 +25,7 @@ function Header() {
         </aside>
       ) : (
         <aside>
-          <SignInButton afterSignInUrl="/translate" mode="modal"/>
+          <SignInButton afterSignInUrl="https://google-translation-app.vercel.app/translate" mode="modal"/>
         </aside>
       )}
     </header>
