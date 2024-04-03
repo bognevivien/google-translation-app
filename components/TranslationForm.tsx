@@ -39,9 +39,9 @@ function TranslationForm({ languages }: { languages: TranslationLanguages }) {
   }, [state]);
 
   return (
-    <div>
-      <form action={formAction}>
-        <div>
+    <div className="mx-2">
+      <form action={formAction} className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-3">
           <Select name="inputLanguage" defaultValue="auto">
             <SelectTrigger className="w-[280px]">
               <SelectValue placeholder="Select a timezone" />
@@ -71,7 +71,7 @@ function TranslationForm({ languages }: { languages: TranslationLanguages }) {
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
-        <div>
+        <div className="flex flex-col space-y-3">
           <Select name="outputLanguage" defaultValue="en">
             <SelectTrigger className="w-[280px]">
               <SelectValue placeholder="Select a timezone" />
