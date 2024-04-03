@@ -1,38 +1,14 @@
-import TranslationForm from "@/components/TranslationForm";
-import { auth } from "@clerk/nextjs/server";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
-export type TranslationLanguages = {
-  translation: {
-    [key: string]: {
-      name: string;
-      nativeName: string;
-      dir: "ltr" | "rtl";
-    };
-  };
-};
-
-async function Home() {
-  auth().protect();
-
-  const { userId } = auth();
-  if (!userId) throw new Error("User not logged in");
-
-  const languagesEndpoint =
-    "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
-
-  const response = await fetch(languagesEndpoint, {
-    next: {
-      revalidate: 60 * 60 * 24, // cache the results for 24 hours and then refresh
-    },
-  });
-
-  const languages = (await response.json()) as TranslationLanguages;
+export default function Home() {
   return (
-    <div>
-      <TranslationForm languages={languages} />
-    </div>
+    <main className="">
+      <Link href={`/translate`}>
+        {" "}
+        <Button>Translation Here</Button>
+      </Link>
+    </main>
   );
 }
-
-export default Home;
